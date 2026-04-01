@@ -6,3 +6,9 @@ Yet another Erlang TUI library (WIP)
 yaerl TUI
 ヤール ティーユーアイ
 ```
+
+# Build
+
+```bash
+rebar3 compile
+```

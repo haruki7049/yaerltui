@@ -6,7 +6,8 @@
 
 
 -spec init(_Args :: [term()]) ->
-          gen_statem:init_result(gen_statem:state()).
+          gen_statem:init_result(R)
+              when R :: atom().
 init([]) ->
     {ok, on, []}.
 

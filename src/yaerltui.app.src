@@ -2,8 +2,8 @@
  [{vsn, "0.1.0"},
   {description, "Yet another Erlang TUI library"},
   {mod, {yaerltui_app, []}},
-  {modules, [yaerltui_app, yaerltui_sup]},
-  {registered, [yaerltui_sup]},
+  {modules, [yaerltui_app, yaerltui_sup, rawmode_worker]},
+  {registered, [yaerltui_sup, rawmode_worker]},
   {applications, [kernel, stdlib]},
   {licenses, ["MIT"]},
   {links, [{"GitHub", "https://github.com/haruki7049/yaerltui"}]}]}.

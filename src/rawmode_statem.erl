@@ -26,19 +26,19 @@ start_link() ->
 
 
 -spec show_rawmode() -> R
-    when R :: atom().
+              when R :: atom().
 show_rawmode() ->
     gen_statem:call(?MODULE, show_rawmode).
 
 
 -spec switch_rawmode() -> R
-    when R :: atom().
+              when R :: atom().
 switch_rawmode() ->
     gen_statem:call(?MODULE, switch_rawmode).
 
 
 -spec off(EventType :: gen_statem:event_type(), EventContent :: atom(), Data :: term()) ->
-    gen_statem:event_handler_result(atom()).
+          gen_statem:event_handler_result(atom()).
 off({call, From}, switch_rawmode, Data) ->
     {next_state, on, Data, [{reply, From, on}]};
 off({call, From}, show_rawmode, Data) ->
@@ -48,7 +48,7 @@ off(EventType, EventContent, Data) ->
 
 
 -spec on(EventType :: gen_statem:event_type(), EventContent :: atom(), Data :: term()) ->
-    gen_statem:event_handler_result(atom()).
+          gen_statem:event_handler_result(atom()).
 on({call, From}, switch_rawmode, Data) ->
     {next_state, off, Data, [{reply, From, off}]};
 on({call, From}, show_rawmode, Data) ->

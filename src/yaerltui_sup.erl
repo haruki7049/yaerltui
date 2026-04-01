@@ -8,14 +8,19 @@
           {ok, {SupFlags :: supervisor:sup_flags(), [ChildSpec :: supervisor:child_spec()]}} |
           ignore.
 init([]) ->
-    {ok,
-     {{one_for_one, 3, 10},
-      [{tag1,
-        {rawmode_worker, start_link, []},
-        permanent,
-        10000,
-        worker,
-        [rawmode_worker]}]}}.
+    ChildSpecs = [#{
+                    id => rawmode_statem,
+                    start => {rawmode_statem, start_link, []},
+                    restart => permanent
+                   }],
+
+    SupFlags = #{
+                 strategy => one_for_one,
+                 intensity => 1,
+                 period => 5
+                },
+
+    {ok, {SupFlags, ChildSpecs}}.
 
 
 -spec start_link(Args :: term()) ->
